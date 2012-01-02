@@ -10,6 +10,15 @@
 
 
 = Details =
+由於ZigBee系統裏,節點的型式(type)無法在燒錄firmware後改變,所以 Coordinator/Router/End device 都有各自的hex file.
+
+並且high/lower power的模組的power table設定也不同, 所以也各自有試用的版本, 所以Catcan CMD firmware總共有6個版本:
+
+* Coordinator High power/Low power
+
+* Router High power/Low power
+
+* End High power/Low power
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
