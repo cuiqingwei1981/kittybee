@@ -9,6 +9,11 @@ Most ZigBee device can work in several compliance with ZigBee spec.
 
 = Details =
 reference:
+
+http://www.zigbee.org/Portals/0/logo.gif
+
 http://www.zigbee.org/
+
+http://www.ti.com/en/graphics/header/hdr_ti_logo.gif
 
 http://www.ti.com/tool/z-stack
