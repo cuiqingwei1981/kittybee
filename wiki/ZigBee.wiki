@@ -1,0 +1,13 @@
+#summary Low power 2.4G mesh network
+#labels Featured
+
+= Introduction =
+following IEEE 802.15.4, ZigBee alliance defined the spec of ZigBee.
+
+Most ZigBee device can work in several compliance with ZigBee spec.
+
+
+= Details =
+reference:
+http://www.zigbee.org/
+http://www.ti.com/tool/z-stack
