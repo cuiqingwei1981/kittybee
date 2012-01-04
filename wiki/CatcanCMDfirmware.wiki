@@ -35,4 +35,8 @@
 
 http://rtcmagazine.com/archive_images/rtc0604tc_fs5.gif
 
-ZigBee Pro 的stack理規範了每個device 可以做的事情, 但是沒有規定要怎麼做, 例如網路的加入及組織.原意是要留給使用用者來規劃自己適合的網路, 但是要具有規劃ZigBee網路的能力, 要花上很多的時間來研讀相關規範..
+ZigBee Pro 的stack理規範了每個device 可以做的事情, 但是沒有規定要怎麼做, 例如網路的加入及組織.原意是要留給使用用者來規劃自己適合的網路, 但是要具有規劃ZigBee網路的能力, 要花上很多的時間來研讀相關規範, 有相當的難度.
+
+KittyBee內建的 catcan CMD firmware, 已經規畫了相當程度的網路功能, 可以讓使用者很快的上手. 但是需注意的是, 如果要更改device type, 那一定要重新用TI 的flash programmer來燒錄,這部分會有另外的章節說明.
+
+* 基本行為*
