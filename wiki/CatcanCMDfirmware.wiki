@@ -23,7 +23,8 @@
 
 * End High power/Low power
 
-==_default網路慨述_==
+==_網路慨述_==
+ 在ZigBee 網路裏會有三種devices:
 
 *coordinator*
 每個ZigBee網路中, 都會有一個,而且是唯一的.Coordinator 在網路形成時會負責組織網路, 分配Short Address. 
@@ -31,3 +32,5 @@
 *Router* 顧名思義, 就有routing 資料功能, 同時也可以做End Device的事, 例如周邊溫度的量測...etc.
 
 *End Device* 本身做為資料傳輸的末端節點, 不具備任何routing的功能
+
+http://rtcmagazine.com/archive_images/rtc0604tc_fs5.gif
