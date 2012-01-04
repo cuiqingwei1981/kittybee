@@ -34,3 +34,5 @@
 *End Device* 本身做為資料傳輸的末端節點, 不具備任何routing的功能
 
 http://rtcmagazine.com/archive_images/rtc0604tc_fs5.gif
+
+ZigBee Pro 
