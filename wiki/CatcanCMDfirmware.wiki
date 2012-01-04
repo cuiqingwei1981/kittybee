@@ -35,4 +35,4 @@
 
 http://rtcmagazine.com/archive_images/rtc0604tc_fs5.gif
 
-ZigBee Pro 
+ZigBee Pro 的stack理規範了每個device 可以做的事情, 但是沒有規定要怎麼做, 例如網路的加入及組織.原意是要留給使用用者來規劃自己適合的網路, 但是要具有規劃ZigBee網路的能力, 要花上很多的時間來研讀相關規範..
