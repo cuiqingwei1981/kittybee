@@ -39,4 +39,18 @@ ZigBee Pro 的stack理規範了每個device 可以做的事情, 但是沒有規�
 
 KittyBee內建的 catcan CMD firmware, 已經規畫了相當程度的網路功能, 可以讓使用者很快的上手. 但是需注意的是, 如果要更改device type, 那一定要重新用TI 的flash programmer來燒錄,這部分會有另外的章節說明.
 
-* 基本行為*
+=== Catcan CMD firmware的基本行為===
+有兩大內容:
+
+*網路的形成*
+
+ZigBee deice 要可以互連, 最基本的有兩種東西要相同: *Channel* 跟 *PAN ID*. Catcan CMD firmware的default 設定是: Channel=25, PAN ID=FF FF.
+Coordinator 會接受有相同 channel跟PAN ID的router(或end device)所提出的加入請求.
+
+Router跟End device會在第一次啟動時尋找相同channel/PAN ID的 Coordinator 或 Router 來加入. 同一空間中若是有多個可能, 那 Router或 End device 會根據RSSI(Radio Signal Strength Indicator)來選擇.
+
+一般我們稱上一層的為Parent(父母), parent下的是Child(子女)
+
+在link成功時, parent 會給下面一層的Child 不同的 Short Address(SA), 每個device的SA都是唯一的, 在ZigBee 的 network 裏,大多數的溝通都是透過SA完成的...
+
+*資料的傳輸*
