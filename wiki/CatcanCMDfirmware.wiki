@@ -73,4 +73,4 @@ Router跟End device則是會把RX收到的資料, 傳回Coordinator, Coordinator
 
 
 =CatcanCMDfirmware=
-其他的細節都可以在download page 裏的[http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q= CommandSet] 裏找到
+其他的細節都可以在download page 裏的[http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q= CatcanZigBeeAPI] 裏找到
