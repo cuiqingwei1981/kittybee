@@ -30,8 +30,26 @@ KittyBee上會電源轉成3.3V給Zigbee module用, 將jumper調在右邊, 會使
 
 *UART Connector :
 
-*KittyBee* 有內建準位轉換, 讓3.3V的TX/RX轉成5V,以便跟Arduino溝通. 因為 Arduino 168/328的版本都只有一組UART, 通常拿來給Arduino IDE使用, 所以 KittyBee 的規劃是使用 Arduino裏的 [http://arduiniana.org/libraries/newsoftserial/ NewSoftSerial library] 來做為Arduino跟ZigBee溝通的介面.在NewSoftSerial 裏default是使用Digital 2跟3做為TX/RX, 所以只需用jumper依照下圖把TX/RX對接, 就可以使用 NewSoftSerial來跟ZigBee溝通
+*KittyBee* 有內建準位轉換, 讓3.3V的TX/RX轉成5V,以便跟Arduino溝通. 因為 Arduino 168/328的版本都只有一組UART, 通常拿來給Arduino IDE使用, 所以 KittyBee 的規劃是使用 Arduino裏的 [http://arduiniana.org/libraries/newsoftserial/ NewSoftSerial library] 來做為Arduino跟ZigBee溝通的介面.在[http://arduiniana.org/libraries/newsoftserial/ NewSoftSerial library] 裏default是使用Digital 2跟3做為TX/RX, 所以只需用jumper依照下圖把TX/RX對接, 就可以使用 NewSoftSerial來跟ZigBee溝通
 
 當然您也可以使用Arduino的UART(Digital 0跟 1)來跟ZigBee溝通, 只要把ZigBee 5V TX接到Arduino的 RX, ZigBee 5V RX 接到Arduino 的TX 即可
 
 https://lh5.googleusercontent.com/-0ZJq-W916P0/TwUvGmYntMI/AAAAAAAAA0Y/QDPgwWIdsJY/w911-h308-k/2012-01-05%2B12.33.11.jpg
+
+*Link LED:
+
+Link LED在不同device上會有不一樣的行為;
+
+*Coordinator:*
+會恆亮, 因為Coordinator是ZigBee網路的中心
+
+*Router:*
+從來沒有連結過的Router不會亮, 有跟Parent連結過的Router會恆亮
+
+
+*End device:*
+沒有連線時,不會亮, 有連線時才會亮
+
+*CC Debugger Port: 
+
+TI debugger 標準的10pin connector, 可以連接 CC debugger 來為版子上的ZigBee(TI CC2530 based) 做firmware的upgrade.
