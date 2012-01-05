@@ -30,9 +30,8 @@ KittyBee上會電源轉成3.3V給Zigbee module用, 將jumper調在右邊, 會使
 
 *UART Connector :
 
-*KittyBee* 有內建準位轉換, 讓3.3V的TX/RX轉成5V,以便跟Arduino溝通. 因為 Arduino 168/328的版本都只有一組UART, 通常拿來給Arduino IDE使用, 所以 KittyBee 的規劃是使用 Arduino裏的 *NewSoftSerial library* 來做為Arduino跟ZigBee溝通的介面.在NewSoftSerial 裏default是使用Digital 2跟3做為TX/RX, 所以只需用jumper依照下圖把TX/RX對接, 就可以使用 NewSoftSerial來跟ZigBee溝通
+*KittyBee* 有內建準位轉換, 讓3.3V的TX/RX轉成5V,以便跟Arduino溝通. 因為 Arduino 168/328的版本都只有一組UART, 通常拿來給Arduino IDE使用, 所以 KittyBee 的規劃是使用 Arduino裏的 [http://arduiniana.org/libraries/newsoftserial/ NewSoftSerial library] 來做為Arduino跟ZigBee溝通的介面.在NewSoftSerial 裏default是使用Digital 2跟3做為TX/RX, 所以只需用jumper依照下圖把TX/RX對接, 就可以使用 NewSoftSerial來跟ZigBee溝通
 
 當然您也可以使用Arduino的UART(Digital 0跟 1)來跟ZigBee溝通, 只要把ZigBee 5V TX接到Arduino的 RX, ZigBee 5V RX 接到Arduino 的TX 即可
 
 https://lh5.googleusercontent.com/-0ZJq-W916P0/TwUvGmYntMI/AAAAAAAAA0Y/QDPgwWIdsJY/w911-h308-k/2012-01-05%2B12.33.11.jpg
-
