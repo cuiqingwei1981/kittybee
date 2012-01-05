@@ -1,0 +1,22 @@
+#summary Using current available NTC code the measure temperature on Arduino
+
+= Introduction =
+
+
+在Arduino上有相當多的溫度量測方法, 可以選擇使用digital 的temperature sensor(例如DS1621), 也可使用analog 的temperature sensor(例如LM35), 這些sensor使用相當方便, 但是在取得上比較困難價格也較高.
+
+相對的熱敏電阻幾乎在每個電子材料行都買的到, 而且價格低廉, 可以量測的溫度範圍很廣
+
+http://www.joyin.com.tw/lan_chtr/cms_images/Products/EE15937-0.jpg
+
+
+基本上這是一種隨著溫度上升, 電阻值會改變的電阻
+想更深入了解負溫度係數熱敏電阻請參照 [http://en.wikipedia.org/wiki/Thermistor 英文wiki Thermistor] 
+
+
+
+= Details =
+
+我們接下來會使用10K 的NTC配合Arduino來做溫度的量測, 您可以在arduino.cc裏找到相當多的溫度量測範例跟方法, 我個人覺得 Milan Malesevic and Zoran Stupic 在Arduino Play Ground裏寫的[http://arduino.cc/playground/ComponentLib/Thermistor2 Thermistor2]相當好用, 我把其中一個我覺得最簡單的版本示範如下
+
+*接線
