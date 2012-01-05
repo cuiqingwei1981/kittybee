@@ -2,8 +2,10 @@
 
 = Introduction =
 
-KittyBee 可以直接放上Arduino的基本format, 目前有 high power(18dbm)跟low power(4dbm)兩種硬體版本, 每一種硬體都可以選擇 Coordinator/Router/End device 的 [CatcanCMDfirmware], device的種類
-comes with 2 versions in terms of hardware, one with high power at 18dbm, one with low power at 4 dbm. Both comes with catcan CMD firmware on board( Coordinator/Router/End device), allow arduino user to set up easily a simple wireless network.
+*KittyBee* 可以直接放上Arduino的基本format, 目前有 high power(18dbm)跟low power(4dbm)兩種硬體版本, 每一種硬體都可以選擇 Coordinator/Router/End device 的 [CatcanCMDfirmware], 所以有6種firmware,都可以在downloads 下載.
+
+Down load不一樣的firmware需要 TI 的 CC debugger(硬體) 跟 TI 的 smart flash programmer(Free download 軟體)
+
 
 = Details =
 
