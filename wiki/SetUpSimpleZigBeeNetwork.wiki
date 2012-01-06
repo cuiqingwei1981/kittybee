@@ -50,4 +50,4 @@ KittyBee是透過UART來接收Command跟data.Default的設定是38400, 8N1, no f
 
 在PC上, 我們需要一個Terminal, 可惜的是windows裏已經不再附有終端機了, 網路上有許多選擇, 以下的範例會使用[http://www.docklight.de/ DockLight], 非常好用, 有Free 的evaluation 版本可供下載
 
-裝好DockLight後, 也可以在download
+裝好DockLight後, 也可以在download 區找到[http://code.google.com/p/kittybee/downloads/detail?name=ZigBee%20CMD_Catcan.ptp&can=2&q= ZigBee CMD catcan.ptp], 這裏面已經鍵入好了幾個常用的command.
