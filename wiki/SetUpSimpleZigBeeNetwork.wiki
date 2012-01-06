@@ -56,11 +56,21 @@ KittyBee是透過UART來接收Command跟data.Default的設定是38400, 8N1, no f
 
 https://lh3.googleusercontent.com/-jcZmlijJrNY/Twa-X_pqZ8I/AAAAAAAAA40/lTnaG6O4fkY/w186-h197-k/terminal%2Bset%2Bup.JPG
 
-接下來我們要對KittyBee下Ping Node的 command:FE 00 01
+接下來我們要對KittyBee下Ping Node的 command: *FE 00 01*
 
 https://lh3.googleusercontent.com/-GlQOAhQJ-gc/Twa-XzDxG7I/AAAAAAAAA30/NZsNCzzZpSk/w1638-h131-k/Ping%2Bnode.JPG
 
 *藍色* 是我們下出去的Command:其中FE 是 header,  00 01是要device 回資料回來, 下一個00 是指後面沒有資料, 最後一個01則是從FE之後的00一路做XOR下來的FCS
 
 *紅色* 是KittyBee回回來的, FE依然是header, 10 01代表後面是針對 00 01的回覆,
-0F 代表後面有15個byte的資料
+0F 代表後面有15個byte的資料, 參照  [http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q= Catcan ZigBee API]我們知道:
+
+*B8 97 0D 01 00 4B 12 00* 是這個device的 8 bytes IEEE address.
+
+*FF FF* 則是 2 bytes 的 PAN ID(*Default 值是 FF FF*). 
+
+*02 00 00 00* 是表示目前是在第 25 Channel.(有表可查)
+
+*00* 這個00是說這個device 是 Coordinator(Router=01, End device=02)
+
+*66* 則是FCS
