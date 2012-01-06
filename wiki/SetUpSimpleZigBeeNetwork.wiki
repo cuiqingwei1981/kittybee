@@ -30,6 +30,6 @@ https://lh5.googleusercontent.com/-V3s5km7gkmU/TwZsdeZCPPI/AAAAAAAAA1w/_xVWX-_Hm
 
 https://lh6.googleusercontent.com/-NDN8ibpsa8Q/TwZsdTc7OQI/AAAAAAAAA14/l9wjBdEGVgs/w500-h208-k/2012-01-06%2B11.26.43.jpg
 
-綠色是FTDI-RX到ZigBee 5V TX,藍色是FTDI-TX到ZigBee 5V RX
+綠色是Duemilanove上的TX到ZigBee TX 5V,藍色是Duemilanove上的RX到ZigBee RX 5V
 
-https://lh5.googleusercontent.com/-WiBJG9y-0dQ/TwZy0b-No7I/AAAAAAAAA2A/Xnqh8TjNgs8/s1152/image
+https://lh4.googleusercontent.com/--WLwPJ0dYRw/TwZ1H-O2k3I/AAAAAAAAA2g/HIIBGD7CCTU/w602-h124-k/uart.jpg
