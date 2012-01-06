@@ -18,9 +18,18 @@
 = Details =
 
 *硬體接線
+
 接線的基本是讓ZigBee的TX接到USB-UART轉板的RX, ZigBee的RX接到USB-UART轉板的TX, Ground一定要接, 另外也可以使用轉板來對KittyBee供電
 
 下圖中左側是一個信號準為3.3V的 FTDI USB-UART轉板,我們把Ground接起來,轉板上面有5V的輸出,接到power selector的input pins(從側面看, 下方靠版子的兩pins), 轉板RX接到ZigBee 3.3V TX,轉板TX接到ZigBee 3.3V RX.
 黑色的是Ground, 紅色的是5V, 綠色是FTDI-RX到ZigBee 3.3V TX,藍色是FTDI-TX到ZigBee 3.3V RX
 
 https://lh5.googleusercontent.com/-V3s5km7gkmU/TwZsdeZCPPI/AAAAAAAAA1w/_xVWX-_Hm9Q/w500-h205-k/2012-01-06%2B11.27.00.jpg
+
+下圖則是利用拿掉ATMEGA168/328的Duemilanove來做接線, 須注意的是:Duemilanove上的FTDI是5V的設定, 並且Duemilanove上的TX是指原本arduino的TX, 也就是版子上FTDI的RX, 一樣的原理運用在Duemilanove上的RX
+
+https://lh6.googleusercontent.com/-NDN8ibpsa8Q/TwZsdTc7OQI/AAAAAAAAA14/l9wjBdEGVgs/w500-h208-k/2012-01-06%2B11.26.43.jpg
+
+綠色是FTDI-RX到ZigBee 5V TX,藍色是FTDI-TX到ZigBee 5V RX
+
+<img src="//lh5.googleusercontent.com/-WiBJG9y-0dQ/TwZy0b-No7I/AAAAAAAAA2A/Xnqh8TjNgs8/w614-h124-k/image" width="614" height="124" style="margin-left: 0px; margin-top: 0px; ">
