@@ -3,20 +3,18 @@
 = Introduction =
 
 這裡我們要以一組3個devices( Coordinator/Router/End device)為範例, 示範及使用一些Command 來確認ZigBee 網路是否已經建立
-我們會用到:
-KittyBee Coordinator
-KittyBee Router(or End device)
-KittyBee End device
 
-USB to UART converter:
+*我們會用到:
+
+ # KittyBee Coordinator
+ # KittyBee Router(or End device)
+ # KittyBee End device
+ # USB to UART converter:
 例如 FTDI basic 或是其他USB轉UART的轉版. 這類的轉版一般有3.3V或5V,都可以用,因為KittyBee上有3.3V轉5V的功能. 或著是用Duemilanove拿掉Mega168/328也可以使用
 
-建議參照[]
+操作時建議參照[CatcanCMDfirmware]
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+*硬體接線
