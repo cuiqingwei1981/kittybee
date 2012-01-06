@@ -33,3 +33,8 @@ https://lh6.googleusercontent.com/-NDN8ibpsa8Q/TwZsdTc7OQI/AAAAAAAAA14/l9wjBdEGV
 綠色是Duemilanove上的TX到ZigBee TX 5V,藍色是Duemilanove上的RX到ZigBee RX 5V
 
 https://lh4.googleusercontent.com/--WLwPJ0dYRw/TwZ1H-O2k3I/AAAAAAAAA2g/HIIBGD7CCTU/w602-h124-k/uart.jpg
+
+當USB-UART的轉板接上PC時, 您應該可以在硬體管理員裏看到一個USB SerialPort的device.
+插上幾個USB-UART的轉板就應該會出現幾個USB SerialPort, 但是每個COM Number不會一樣, 請記下每個device的 COM Number
+
+https://lh5.googleusercontent.com/-VcXEiUotKpE/TwZ-Rnj0LgI/AAAAAAAAA3A/bBle-C4u9NQ/w281-h287-k/USBinControlPanel.JPG
