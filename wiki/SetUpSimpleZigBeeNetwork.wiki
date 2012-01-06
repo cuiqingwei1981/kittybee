@@ -40,3 +40,5 @@ https://lh4.googleusercontent.com/--WLwPJ0dYRw/TwZ1H-O2k3I/AAAAAAAAA2g/HIIBGD7CC
 https://lh5.googleusercontent.com/-VcXEiUotKpE/TwZ-Rnj0LgI/AAAAAAAAA3A/bBle-C4u9NQ/w281-h287-k/USBinControlPanel.JPG
 
 *軟體:PC上的terminal以及CMD範例
+
+KittyBee是透過UART來接收Command跟data. [http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q= CommandSet API]裏描述了所有的command也描述了command的結構. 所有的command都是以FE 開頭
