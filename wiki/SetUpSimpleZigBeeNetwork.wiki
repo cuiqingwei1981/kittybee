@@ -38,3 +38,5 @@ https://lh4.googleusercontent.com/--WLwPJ0dYRw/TwZ1H-O2k3I/AAAAAAAAA2g/HIIBGD7CC
 插上幾個USB-UART的轉板就應該會出現幾個USB SerialPort, 但是每個COM Number不會一樣, 請記下每個device的 COM Number
 
 https://lh5.googleusercontent.com/-VcXEiUotKpE/TwZ-Rnj0LgI/AAAAAAAAA3A/bBle-C4u9NQ/w281-h287-k/USBinControlPanel.JPG
+
+*軟體:PC上的terminal以及CMD範例
