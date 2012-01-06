@@ -49,3 +49,5 @@ KittyBee是透過UART來接收Command跟data.Default的設定是38400, 8N1, no f
 請把Coordinator將上USB-UART轉接板, 我們來實際操作...
 
 在PC上, 我們需要一個Terminal, 可惜的是windows裏已經不再附有終端機了, 網路上有許多選擇, 以下的範例會使用[http://www.docklight.de/ DockLight], 非常好用, 有Free 的evaluation 版本可供下載
+
+裝好DockLight後, 也可以在download
