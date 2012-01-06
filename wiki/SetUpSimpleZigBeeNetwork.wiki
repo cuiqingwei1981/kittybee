@@ -42,4 +42,10 @@ https://lh5.googleusercontent.com/-VcXEiUotKpE/TwZ-Rnj0LgI/AAAAAAAAA3A/bBle-C4u9
 *軟體:PC上的terminal以及CMD範例
 
 KittyBee是透過UART來接收Command跟data.Default的設定是38400, 8N1, no flow control, 這些都可以由使用者透過命令去更改
- [http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q= Catcan ZigBee API]裏描述了所有的command也描述了command的結構. 所有的command都是以*FE* 開頭
+ [http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q= Catcan ZigBee API]裏描述了所有的command也在第一頁描述了command的結構. 
+
+所有的command都是以*FE* 開頭, 接著2個bytes的command Nr, 之後根據該command的內容, 有時會帶有資料, 這時會接著會有一個byte說明*後面資料*的長度(以byte為單位), 再接*資料*, 最後一byte是*FCS*(Frame check sequence), 這是把FE之後的所有byte依序做*XOR*所得到的檢查碼. 
+
+請把Coordinator將上USB-UART轉接板, 我們來實際操作...
+
+在PC上, 我們需要一個Terminal, 可惜的是windows裏已經不再附有終端機了, 網路上有許多選擇, 以下的範例會使用[http://www.docklight.de/ DockLight], 非常好用, 有Free 的evaluation 版本可供下載
