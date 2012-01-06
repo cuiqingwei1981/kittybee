@@ -23,4 +23,4 @@
 下圖中左側是一個信號準為3.3V的 FTDI USB-UART轉板,我們把Ground接起來,轉板上面有5V的輸出,接到power selector的input pins(從側面看, 下方靠版子的兩pins), 轉板RX接到ZigBee 3.3V TX,轉板TX接到ZigBee 3.3V RX.
 黑色的是Ground, 紅色的是5V, 綠色是FTDI-RX到ZigBee 3.3V TX,藍色是FTDI-TX到ZigBee 3.3V RX
 
-https://lh5.googleusercontent.com/-V3s5km7gkmU/TwZsdeZCPPI/AAAAAAAAA1s/o2jKTqkGlUg/w466-h191-n-k/2012-01-06%2B11.27.00.jpg
+https://lh5.googleusercontent.com/-V3s5km7gkmU/TwZsdeZCPPI/AAAAAAAAA1w/_xVWX-_Hm9Q/w500-h205-k/2012-01-06%2B11.27.00.jpg
