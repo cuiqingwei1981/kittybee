@@ -32,4 +32,4 @@ https://lh6.googleusercontent.com/-NDN8ibpsa8Q/TwZsdTc7OQI/AAAAAAAAA14/l9wjBdEGV
 
 綠色是FTDI-RX到ZigBee 5V TX,藍色是FTDI-TX到ZigBee 5V RX
 
-<img src="//lh5.googleusercontent.com/-WiBJG9y-0dQ/TwZy0b-No7I/AAAAAAAAA2A/Xnqh8TjNgs8/w614-h124-k/image" width="614" height="124" style="margin-left: 0px; margin-top: 0px; ">
+https://lh5.googleusercontent.com/-WiBJG9y-0dQ/TwZy0b-No7I/AAAAAAAAA2A/Xnqh8TjNgs8/s1152/image
