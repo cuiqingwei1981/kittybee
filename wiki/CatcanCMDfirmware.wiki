@@ -72,5 +72,5 @@ Coordinator 會把RX收到的資料, 直接broadcast給網路中的所有devices
 Router跟End device則是會把RX收到的資料, 傳回Coordinator, Coordinator會把收到的資料從自己的TX傳出來, 單筆資料長度最大為255 bytes. 須注意的是Router/End device收到什麼, Coordinator就傳出什麼,不會特別帶出這些資料是從哪個device傳出的. 如果需要知道資料的來源, 最好把來源的訊息放在資料裏,實做可以參考溫度收集的範例.
 
 
-=CatcanCMDfirmware=
-其他的細節都可以在download page 裏的[http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q= CatcanZigBeeAPI] 裏找到
+
+ 其他的細節都可以在download page 裏的[http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q= CatcanZigBeeAPI]裏找到
