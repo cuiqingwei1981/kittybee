@@ -6,4 +6,4 @@
 
 = Details =
 
-==[CatcanCMDfirmware]==
+==[CatcanCMDfirmware] 預設的資料傳輸==
