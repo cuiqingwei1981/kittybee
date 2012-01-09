@@ -38,7 +38,7 @@ https://lh5.googleusercontent.com/-aOMpDcPdEOg/Twqbr5w_W3I/AAAAAAAAA8A/7EOVa1KaW
 
 *[http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q= Catcan ZigBee API]裏有提到使用command set來傳遞資料給指定的device. 我們可以根據 device的 Short Address或是IEEE address 來針對特定device 傳輸
 
-例如現在要對 short address=08 7B 的device傳遞 4個bytes的資料(00 11 22 33)
+例如現在要從 short address= A0 11的device 對 short address=08 7B 的device傳遞 4個bytes的資料(00 11 22 33)
 那應該是要這樣下:
 
 *FE 00 43 07 08 7B 04 00 11 22 33 33* 
@@ -54,3 +54,17 @@ https://lh5.googleusercontent.com/-aOMpDcPdEOg/Twqbr5w_W3I/AAAAAAAAA8A/7EOVa1KaW
 *00 11 22 33* 是這4個bytes的內容
 
 *33* 最後一個byte是 FCS,剛好是33
+
+A0 11 這個device 會把收到的封包, 轉成從TX這樣輸出:
+
+* FE 10 43 08 A0 11 04 00 11 22 33 EE*
+
+*FE 1043* 表示是由 FE 00 43的command發出來的
+
+*08* 代表後面有8個bytes.
+
+*A0 11* 是發件者的short address
+
+*04 00 11 22 33* 代表了資料長度跟資料內容
+
+*EE* 是FCS
