@@ -55,7 +55,7 @@ https://lh5.googleusercontent.com/-aOMpDcPdEOg/Twqbr5w_W3I/AAAAAAAAA8A/7EOVa1KaW
 
 *33* 最後一個byte是 FCS,剛好是33
 
-A0 11 這個device 會把收到的封包, 轉成從TX這樣輸出:
+*08 7B 這個device 會把收到的封包, 轉成從TX這樣輸出:*
 
 * FE 10 43 08 A0 11 04 00 11 22 33 EE*
 
@@ -68,3 +68,8 @@ A0 11 這個device 會把收到的封包, 轉成從TX這樣輸出:
 *04 00 11 22 33* 代表了資料長度跟資料內容
 
 *EE* 是FCS
+
+* Note:
+ # default的傳輸比較簡單跟直接, 但是需要資料的來源地帶資料本身裏面
+ # 指定傳輸也可以做boradcast, 使用FE 00 42
+ # 指定傳輸本身有資料來源的資訊,也帶有資料的長度,但是需要管理 ZigBee 網路的Short Address, 功能較多, 但是使用上須要更多的技巧
