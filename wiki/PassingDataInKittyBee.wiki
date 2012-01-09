@@ -33,3 +33,5 @@ https://lh6.googleusercontent.com/-kuBfgsC9BYE/TwqeXsUoBEI/AAAAAAAAA8o/NbEQGg8xx
 https://lh5.googleusercontent.com/-aOMpDcPdEOg/Twqbr5w_W3I/AAAAAAAAA8A/7EOVa1KaWDU/w378-h267-k/passdata4.PNG
 
 以上這些是default的傳輸方法, 這樣的結構已經可以做一些簡單的ModBus protocol.
+
+==指定傳輸==
