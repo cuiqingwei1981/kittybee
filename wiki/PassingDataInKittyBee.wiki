@@ -1,7 +1,7 @@
 #summary How default data passing in KittyBee
 
 = Introduction =
-根據我們已經建立起了網路
+根據[SetUpSimpleZigBeeNetwork]我們已經建立起了基礎網路,接下來我們要說明資料傳輸的方法
 
 
 = Details =
