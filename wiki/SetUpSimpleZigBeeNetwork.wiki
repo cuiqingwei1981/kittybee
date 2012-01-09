@@ -113,10 +113,10 @@ https://lh3.googleusercontent.com/-H2PSDT-ODV4/Twa-YXrT4BI/AAAAAAAAA34/rnt81HPK1
 如果再把另外一顆Router(或device)連上USB-UART, 照之前的程序用 FF 00 01確認有正確起來, 回到Coordinator, 再下一次 *FF 00 13*,這時應該會有第二行回覆:
 你可以看到, 這時資料長度是 *05* , 連接的Child數已經是*02* 了, Short Address各是之前的*A0 11*, 跟新增加的*08 7B*
 
+*這時這個網路已經連線了, 這時網路裏的device都會把parent跟Child記住, 就算斷電再回覆, 也會連回來*
+
 *Note
  # 在這個範例裏, 兩個device都是直接連到Coordinator, Router/End device連接的順序是以 *RSSI* 最強的為優先,RSSI步不全然代表距離,有時和環境跟天線的角度也有很大的關係, 所以第二顆Router(End devce)不一定會連到Coordinator, 也許會連到之前的那顆Router.
  # FE 00 13(Get Child)只會顯示自身下的Child, 不會顯示Child下的Child.
  # FE 00 13(get child)這個command會回傳所有曾經連過的Child , 如果您的Coordinator/Router/End device之前已經連過了, 請用 FE 00 02 (Reset Network, 完整的command 包含FCS為 FE 00 02 00 02) 將device 的network 回覆到default沒有連線過的狀況
  # Short Address 是ZigBee 網路溝通的基礎, 可以用 FE 00 05 (Get Short Address, 完整的command 包含FCS為 FE 00 05 00 05)
-
-
