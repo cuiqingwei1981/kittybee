@@ -14,4 +14,20 @@
 
 -Coordinator會把RX所收到的任何資料, broadcast傳到網路裏的每一個device, 從該device的TX傳出
 
-https://lh4.googleusercontent.com/-QWWg5yrJ7V4/TwqaPmy_DFI/AAAAAAAAA6o/sUws31NLzqU/w500-h282-k/passdata1.PNG
+*下面這三個視窗從上到下分別是Coordinator, Router, End device, 
+ping node的command 最後一個byte可以看出device type.(00=Coor, 01=router, 02=End device)
+
+https://lh5.googleusercontent.com/-QWWg5yrJ7V4/TwqaPmy_DFI/AAAAAAAAA7A/ub4yX5NZ3F4/w462-h320-k/passdata1.PNG
+
+*這時我們從Router輸入80bytes的資料, 你可以看到, Coordinator就傳出了80bytes.
+
+https://lh5.googleusercontent.com/-ksPS31QW4aM/Twqbr3iwVxI/AAAAAAAAA74/LS-Fwszlnto/w447-h287-k/passdata2.PNG
+
+*再從End device 輸入80bytes的資料, 資料也是從Coordinator傳出, 不論RF的路線是否經過Router, Router都不會有輸出
+
+https://lh6.googleusercontent.com/-kuBfgsC9BYE/TwqeXsUoBEI/AAAAAAAAA8o/NbEQGg8xxnw/w372-h269-k/passdata3.PNG
+
+
+*下圖中我們從Coordinator輸入80bytes的資料, 你可以看到, Router跟End device都輸出了相同的資料
+
+https://lh5.googleusercontent.com/-aOMpDcPdEOg/Twqbr5w_W3I/AAAAAAAAA8A/7EOVa1KaWDU/w378-h267-k/passdata4.PNG
