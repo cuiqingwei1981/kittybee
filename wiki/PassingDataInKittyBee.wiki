@@ -1,0 +1,12 @@
+#summary How default data passing in KittyBee
+
+= Introduction =
+根據我們已經建立起了網路
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
