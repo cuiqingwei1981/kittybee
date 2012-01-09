@@ -1,0 +1,15 @@
+#summary form a frame with data, header and other checking bites.
+
+= Introduction =
+
+資料的傳輸總是會有錯誤或遺漏的可能, 由其在無線的傳輸裏,應是有可能發生
+
+這裡我們要介紹一個簡單的封包的組合, 並以此來完成我們溫度監控的資料傳輸
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
