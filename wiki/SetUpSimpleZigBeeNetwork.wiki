@@ -52,7 +52,8 @@ KittyBee是透過UART來接收Command跟data.Default的設定是38400, 8N1, no f
 
 裝好DockLight後, 也可以在download 區找到[http://code.google.com/p/kittybee/downloads/detail?name=ZigBee%20CMD_Catcan.ptp&can=2&q= ZigBee CMD catcan.ptp], 這裏面已經鍵入好了幾個常用的command.
 
-接好硬體,打開Terminal之後的第一件事就是確定COM PORT跟 Baud rate等設定是否正確, default是38400, 8N1, no flow control
+===第一步===
+請先接好一片*KittyBee Coornidtor* 的硬體,打開Terminal之後的第一件事就是確定COM PORT跟 Baud rate等設定是否正確, default是38400, 8N1, no flow control
 
 https://lh3.googleusercontent.com/-jcZmlijJrNY/Twa-X_pqZ8I/AAAAAAAAA40/lTnaG6O4fkY/w186-h197-k/terminal%2Bset%2Bup.JPG
 
@@ -74,3 +75,48 @@ https://lh3.googleusercontent.com/-GlQOAhQJ-gc/Twa-XzDxG7I/AAAAAAAAA30/NZsNCzzZp
 *00* 這個00是說這個device 是 Coordinator(Router=01, End device=02)
 
 *66* 則是FCS
+
+*到這裏, 我們可以確定這個coordinator有正確的啟動*
+
+再來我們要來看看它下面是不是有Child,這是可以用 *FE 00 13* 的command(Get Child)
+
+https://lh5.googleusercontent.com/-ClGI9aFzSj4/Twa-YKl6NSI/AAAAAAAAA4Q/-cPouBIX94Y/w963-h131-k/GetChildNone.JPG
+
+FE 10 13代表device針對FE 00 13的回覆,
+
+*01* 代表後面的data只有一個byte
+
+*00* 代摽這一byte是 0, 也就是說沒有child
+
+*02* 則是FCS
+
+===第二步===
+保留原來的Coordinator,再照之前的接法把*Kitty Bee Router(或是 End device)*接上USB-UART
+一樣先以*FE 00 01* 的指令來看這個device有沒有正確的回應IEEE address以及其他資訊
+
+這時再回到之前的Coordinator, 我們再下一次 Get Child的command *FE 00 13*
+
+這時*FE 10 13* 後面已經不是*01* 了, 
+
+*03* 代表後面有3個bytes
+
+*01* 代表Child的個數, 一個
+
+*A0 11* 則是這個device的*Short Address* (SA)
+
+*B0* FCS
+
+https://lh3.googleusercontent.com/-H2PSDT-ODV4/Twa-YXrT4BI/AAAAAAAAA34/rnt81HPK1WQ/w830-h191-k/GetChildOne.JPG
+
+
+
+如果再把另外一顆Router(或device)連上USB-UART, 照之前的程序用 FF 00 01確認有正確起來, 回到Coordinator, 再下一次 *FF 00 13*,這時應該會有第二行回覆:
+你可以看到, 這時資料長度是 *05* , 連接的Child數已經是*02* 了, Short Address各是之前的*A0 11*, 跟新增加的*08 7B*
+
+*Note
+ # 在這個範例裏, 兩個device都是直接連到Coordinator, Router/End device連接的順序是以 *RSSI* 最強的為優先,RSSI步不全然代表距離,有時和環境跟天線的角度也有很大的關係, 所以第二顆Router(End devce)不一定會連到Coordinator, 也許會連到之前的那顆Router.
+ # FE 00 13(Get Child)只會顯示自身下的Child, 不會顯示Child下的Child.
+ # FE 00 13(get child)這個command會回傳所有曾經連過的Child , 如果您的Coordinator/Router/End device之前已經連過了, 請用 FE 00 02 (Reset Network, 完整的command 包含FCS為 FE 00 02 00 02) 將device 的network 回覆到default沒有連線過的狀況
+ # Short Address 是ZigBee 網路溝通的基礎, 可以用 FE 00 05 (Get Short Address, 完整的command 包含FCS為 FE 00 05 00 05)
+
+
