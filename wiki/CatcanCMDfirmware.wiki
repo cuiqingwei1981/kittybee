@@ -65,8 +65,7 @@ Catcan CMD firmware是為簡單的資料收集以及控制而設計, 在不做�
 
 *Coordinator的廣播功能:
 
-Coordinator 會把RX收到的資料, 直接broadcast給網路中的所有devices. 收到的device會把資料由自己的TX傳出來. 但資料長度限定在66個bytes 以內, 單筆資料超過66bytes,該筆資料不會傳出
-
+Coordinator 會把RX收到的資料, 直接broadcast給網路中的所有devices. 收到的device會把資料由自己的TX傳出來. 但資料長度限定在80個bytes 以內, 超過80bytes, 建議拆成兩組發送
 *Router跟End device的回傳功能:
 
 Router跟End device則是會把RX收到的資料, 傳回Coordinator, Coordinator會把收到的資料從自己的TX傳出來, 單筆資料長度最大為255 bytes. 須注意的是Router/End device收到什麼, Coordinator就傳出什麼,不會特別帶出這些資料是從哪個device傳出的. 如果需要知道資料的來源, 最好把來源的訊息放在資料裏,實做可以參考溫度收集的範例.
