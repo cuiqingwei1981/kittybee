@@ -35,3 +35,10 @@ https://lh5.googleusercontent.com/-aOMpDcPdEOg/Twqbr5w_W3I/AAAAAAAAA8A/7EOVa1KaW
 以上這些是default的傳輸方法, 這樣的結構已經可以做一些簡單的ModBus protocol.
 
 ==指定傳輸==
+
+*[http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q= Catcan ZigBee API]裏有提到使用command set來傳遞資料給指定的device. 我們可以根據 device的 Short Address或是IEEE address 來針對特定device 傳輸
+
+例如現在要對
+命令的格式:
+
+*FE 00 42* 
