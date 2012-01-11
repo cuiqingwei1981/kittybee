@@ -9,7 +9,117 @@
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+==形成傳出的封包==
+只要是傳輸, 就會有失誤的時候, 所以一般都要有除錯的方法, 封包的方法可以非常複雜也可以很簡單..
+我們在[PassingDataInKittyBee]了解到最簡單的資料傳輸法是利用default的UART傳輸來把資料傳回coordinator, 或是由coordinator傳至各device
+封包可以包含有start byte(bit), data length, data, end byte(bits)或是check sum.
+
+在我們的溫度監控範例裏, 我們使用比較簡單的封包方法:
+
+{{{
+void form_array(void){
+ //forming start bytes
+ arrayData[0]=0xff;
+ arrayData[1]=0xff;
+ //=============forming 4 sets data each has 2 bytes
+
+  arrayData[2]=highByte(device_Nr); // value1=device_Nr
+  arrayData[3]=lowByte(device_Nr);
+  
+  arrayData[4]=highByte(T10_C);// value2= temp *10 in C
+  arrayData[5]=lowByte(T10_C); 
+  
+  arrayData[6]=highByte(value3);
+  arrayData[7]=lowByte(value3); 
+  
+  arrayData[8]=highByte(value4);
+  arrayData[9]=lowByte(value4);
+  
+  //=============data type=================
+  arrayData[10]=0x01;
+  //============forming end byte============
+  arrayData[11]=13;
+}// end of form array
+
+}}} 
+
+一個封包包含了12個bytes,最開始的兩個bytes是開始的header, 我是選FF FF, 您也可以自己另外訂...選擇FF FF是因為這個組合跟傳輸的內容不太可能相衝突
+
+接下來兩個bytes, 代表傳回資料的device號碼, 前一個是high byte,後一個是low byte.
+
+再下來, 我們的溫度是把原來的float的數值, 乘以10, 取整數,這樣我們就能以整數方法(2 bytes)傳輸有小數點下一位數的數字 須注意的是, 要先預估一下傳輸的數值會不會溢位. 在我們的case來說,如果都是正的溫度, 溫度最高不會高過百位數, 乘以十後, 也不會超過千, 以兩個byte最高的65535來說, 應該是沒有問題的...就算是有正負值, 也有+-32768, 應該也是沒有問題的...
+
+後面四個bytes是留下來備用傳輸其他資訊
+
+再下來一個byte我把他定義成data byte, 用以標示資料的種類,
+
+最後一個byte是end byte...
+
+==Decode 收到的資料 ==
+以下是接收端的sample code,
+
+我們先檢查serial收下來的資料, 如果第一個跟第二個bytes都是FF, FF,就把資料收下來, 看一下最後一個byte是不是13, 如果三個條件都符合, 那就認為這個封包是正確的,把 device Nr, 跟溫度x10的值組合起來...這樣就完成了....
+
+
+{{{
+void data_validation(void){
+
+// when characters arrive over the serial port...
+  //===========while Serial.available(), read and check if it's 0xff for the first 2======   
+  //=========also check if 11th byte=13
+   validation=0;
+   while(mySerial.available()){
+        arrayData[0]=mySerial.read();
+     if(arrayData[0] == 0xff){              //check point1 if [0]=0xff,if not, flush buffer
+        validation++;       
+        arrayData[1] =mySerial.read();
+            if (arrayData[1] == 0xff){       // check point 2 , if [1]=0xff, if not flush buffer
+                validation++;
+                for (int i=2 ; i<12 ; i++){//start of for loop
+                                           arrayData[i]=0;  // take out the last value
+                                            arrayData[i]=mySerial.read() ;
+                                           } // end of for loop
+                if (arrayData[11] == 13){//start of V[11]==13
+                   validation++;
+                
+                
+                }else{// else of V[11]==13
+               
+                    validation=0;
+                }    //end of if V[11]==13                       
+            }else{// else of arrayV[1]==0xff
+       
+           validation=0;
+                  }// end of if arrayV[1]==0xff  
+     }else{// else of of arrayV[0]==0xff
+       
+          validation=0;
+     }// end of if arrayV[0] == 0xff
+   
+   }// end of while  
+//===============form data============================
+  if ( validation ==3)  {
+    device_Nr =(arrayData[2]<<8)+arrayData[3];
+    if (device_Nr == 1){
+     T10_C_1 =(arrayData[4]<<8)+arrayData[5];
+       T_C_1=T10_C_1/10.;    
+      }// end of if deviceNr==1
+    if (device_Nr == 2){
+     T10_C_2 =(arrayData[4]<<8)+arrayData[5];
+       T_C_2=T10_C_2/10.;    
+      }// end of if deviceNr==2
+    
+  
+    //value3 =(arrayData[6]<<8)+arrayData[7];
+   // value4 =(arrayData[8]<<8)+arrayData[9]; 
+    validation=0; 
+    }// end of validation  
+    
+}//end of data validation
+}}}
+
+
+
+*Note:
+
+當然也可以做出更複雜的封包, 例如加入check sum, 封包的順序等等....
