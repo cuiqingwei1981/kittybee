@@ -1,4 +1,4 @@
-#summary Using current available NTC code  measure temperature with an Arduino
+#summary 在Arduino上,用平價的NTC來量測溫度
 
 = Introduction =
 
