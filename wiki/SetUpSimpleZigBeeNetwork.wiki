@@ -1,4 +1,4 @@
-#summary How to set up a 3 device network and make sure it works.
+#summary 簡單的設定一個3節點的網路
 
 = Introduction =
 
