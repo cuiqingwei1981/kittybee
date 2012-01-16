@@ -1,4 +1,4 @@
-#summary ZigBee shield for Arduino
+#summary KittyBee的硬體說明
 
 = Introduction =
 
