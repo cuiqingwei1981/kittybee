@@ -170,3 +170,15 @@ https://lh5.googleusercontent.com/-0ZJq-W916P0/TwUvGmYntMI/AAAAAAAAA0Y/QDPgwWIds
 *溫度量測端* 端的NTC sensor記得要接回去...
 
 https://lh4.googleusercontent.com/-PjiWt_z2NtU/TxU6_6yHh1I/AAAAAAAAA-E/LBGLxUUsBNA/w383-h287-k/2012-01-17%2B17.06.36%2B%2528%25E4%25B8%25AD%25E5%259E%258B%2529.jpg
+
+
+這時把兩個溫度量測端接上電源:
+
+https://lh4.googleusercontent.com/-XyeSlyfpbcw/TxVDPsw8mPI/AAAAAAAAA-g/FbuJZWY-mZc/w236-h314-k/2012-01-17%2B17.39.30%2B%2528%25E4%25B8%25AD%25E5%259E%258B%2529.jpg
+
+接收端應該會在Serial Monitor輸出溫度:
+
+https://lh3.googleusercontent.com/-VSEo5WIfuhc/TxVDPjcXN-I/AAAAAAAAA-k/h-yl1zp4pVo/w249-h317-k/tempout.PNG
+
+如果您有接16x2的LCD, 應該會是這樣:
+https://lh6.googleusercontent.com/-ko6preINRf0/TxVDPokmuCI/AAAAAAAAA-o/HvuGSmAzD94/w417-h314-k/2012-01-17%2B17.39.41%2B%2528%25E4%25B8%25AD%25E5%259E%258B%2529.jpg
