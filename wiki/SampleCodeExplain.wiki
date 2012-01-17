@@ -24,7 +24,7 @@
 
 
 = Details =
-* 溫度量測端
+* 溫度量測端  *temp_sensing_NSS.pde* 
 
 Device Nr 這裏是在開始的宣告裏寫好的,所以第一個sensor跟第二個sensor要改好再compile 您也可以修改成用dip switch或其他方式來決定
 {{{
@@ -50,4 +50,21 @@ Serial.begin(38400);
 在 *temp_sensing_NSS* 裏面, 我們用[KnowingTempWithArduinoAndNTC]裏說的方法用10K NTC 量測出現有的溫度, T10_C 則把浮點的小數(溫度), 乘以10 再取整數, 方便我們以2 bytes來傳輸
 {{{
  T10_C =  int(Thermister(analogRead(0))*10.)  ;
+}}}
+
+接下來用[SimpleDataFrame]裏講述的方法把device Nr跟T10_C形成簡單的封包
+
+{{{ 
+form_array();
+}}}
+
+把形成的封包從SoftWareSerial(D3 pin)傳給KittyBee
+
+最後將T10_C從Arduino的TX(D1 pin)傳出, 方便從電腦上看到溫度是不是有正確
+
+{{{
+for(int i=0;i<12;i++){
+  mySerial.print(arrayData[i]);
+}
+  Serial.println(T10_C); 
 }}}
