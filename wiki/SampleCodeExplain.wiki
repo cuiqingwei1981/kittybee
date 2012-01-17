@@ -4,7 +4,7 @@
 
 在[http://code.google.com/p/kittybee/downloads/detail?name=temp_sensing_demo.rar&can=2&q= 溫度監控網路sample code] 裏有device端( 溫度sensor)跟接收端的程式 
 
-*temp_sensing_NSS * 是sensor 端的程式
+*temp_sensing_NSS* 是sensor 端的程式
 
 *Coor_LCD_NSS* 是接收端的程式
 
@@ -25,7 +25,13 @@
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+在 *temp_sensing_NSS* 裏面, 我們用[KnowingTempWithArduinoAndNTC]裏說的方法用10K NTC 量測出現有的溫度, T10_C 則把浮點的小數(溫度), 乘以10 再取整數, 方便我們以2 bytes來傳輸
+{{{
+ T10_C =  int(Thermister(analogRead(0))*10.)  ;
+}}}
+
+Device Nr 這裏是在開始的宣告裏寫好的,所以第一個sensor跟第二個sensor要改好再compile 您也可以修改成用dip switch或其他方式來決定
+{{{
+int device_Nr=1;
+//int device_Nr=2;
+}}}
