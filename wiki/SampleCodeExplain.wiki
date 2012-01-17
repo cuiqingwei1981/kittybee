@@ -147,3 +147,21 @@ delay(20);
 
 }//end of show lcd
 }}}
+
+請在一塊Arduino上燒錄接收端的程式, 燒好之後我們要依照準備[SetUpSimpleZigBeeNetwork] 架設一個簡單的ZigBee網路, 一定要有一個是Coordinator, 另外兩個可以是: 
+
+兩個Routers, 
+
+或是,兩個End device, 
+
+或是,一個 router, 一個End device.
+
+之後我們需要把這3片KittyBee 按照[KittyBee] 裏的硬體說明把Power source的 jumper跟UART connector的jumper設好, 像這樣*(三片的接法都一樣)*:
+
+*Power source selector: 
+
+https://lh5.googleusercontent.com/-jl5wfWuGObw/TwUvH4MHsvI/AAAAAAAAA0U/5U00uzAIffc/w456-h168-k/2012-01-05%2B12.32.54.jpg
+
+*UART Connector :
+
+https://lh5.googleusercontent.com/-0ZJq-W916P0/TwUvGmYntMI/AAAAAAAAA0Y/QDPgwWIdsJY/w911-h308-k/2012-01-05%2B12.33.11.jpg
