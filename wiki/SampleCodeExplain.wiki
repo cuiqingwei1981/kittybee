@@ -8,7 +8,14 @@
 
 *Coor_LCD_NSS* 是接收端的程式
 
-再進行實做前
+兩者都會用到 Arduino NewSoftwareSerial的 library 來跟KKittyBee做溝通, 這樣可以保留原來的UART做為debug 跟程式下載用
+
+*在進行實做前, 請務必先看完前面幾篇:
+
+ # 使用10K NTC來量測溫度, 請參考wiki裏的[KnowingTempWithArduinoAndNTC]
+ # 建立一個3節點的基礎ZigBee網路[SetUpSimpleZigBeeNetwork] 
+ # 網路中資料傳輸的方法 [PassingDataInKittyBee]
+ # 把要傳輸的資料做簡單的封包[SimpleDataFrame]
 
 
 
