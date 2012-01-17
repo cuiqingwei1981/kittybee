@@ -113,7 +113,6 @@ code的部分也包含接LCD,在上面顯示的部分,這部分使用<LiquidCrys
 
 下面這一段是把資料輸出的 Serial, 可以用Serial monitor 看到
 {{{
-Serial.println(device_Nr);
 Serial.print( "T_C_1=");
 Serial.println( T_C_1);
 Serial.print( "T_C_2=");
