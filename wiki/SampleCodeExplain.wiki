@@ -2,7 +2,13 @@
 
 = Introduction =
 
-Add your content here.
+在[http://code.google.com/p/kittybee/downloads/detail?name=temp_sensing_demo.rar&can=2&q= 溫度監控網路sample code] 裏有device端( 溫度sensor)跟接收端的程式 
+
+*temp_sensing_NSS * 是sensor 端的程式
+
+*Coor_LCD_NSS* 是接收端的程式
+
+
 
 
 = Details =
