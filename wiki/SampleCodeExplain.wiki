@@ -165,3 +165,9 @@ https://lh5.googleusercontent.com/-jl5wfWuGObw/TwUvH4MHsvI/AAAAAAAAA0U/5U00uzAIf
 *UART Connector :
 
 https://lh5.googleusercontent.com/-0ZJq-W916P0/TwUvGmYntMI/AAAAAAAAA0Y/QDPgwWIdsJY/w911-h308-k/2012-01-05%2B12.33.11.jpg
+
+現在我們要組合KittyBee跟燒錄好code的Arduino, 三片的組法都一樣,*Coordinator* *接收顯示端* 跟 *Router* 或 結合 *End device* 跟*溫度量測端* 結合
+
+*溫度量測端* 端的NTC sensor記得要接回去...
+
+https://lh4.googleusercontent.com/-PjiWt_z2NtU/TxU6_6yHh1I/AAAAAAAAA-E/LBGLxUUsBNA/w383-h287-k/2012-01-17%2B17.06.36%2B%2528%25E4%25B8%25AD%25E5%259E%258B%2529.jpg
