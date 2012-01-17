@@ -68,3 +68,7 @@ for(int i=0;i<12;i++){
 }
   Serial.println(T10_C); 
 }}}
+
+如果NTC的接法正確, 應該可以從Arduino IDE的 Serial Monitor裏看到攝氏溫度的10倍, 例如: 225 就是22.5度C
+
+*溫度感測端如果要多個, 請務必記得Device Nr要跟著修改*
