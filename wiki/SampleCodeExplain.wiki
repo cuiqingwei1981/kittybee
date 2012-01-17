@@ -24,14 +24,30 @@
 
 
 = Details =
-
-在 *temp_sensing_NSS* 裏面, 我們用[KnowingTempWithArduinoAndNTC]裏說的方法用10K NTC 量測出現有的溫度, T10_C 則把浮點的小數(溫度), 乘以10 再取整數, 方便我們以2 bytes來傳輸
-{{{
- T10_C =  int(Thermister(analogRead(0))*10.)  ;
-}}}
+* 溫度量測端
 
 Device Nr 這裏是在開始的宣告裏寫好的,所以第一個sensor跟第二個sensor要改好再compile 您也可以修改成用dip switch或其他方式來決定
 {{{
 int device_Nr=1;
 //int device_Nr=2;
+}}}
+
+接下來我們include NewSoftSerial, D2為RX, D3為TX
+math.h 是NTC計算溫度時用的
+
+在 setup()裏我們把兩個serial 都宣告成38400,這部分也可以自己更改, 不過myserial() 這個SoftwareSerial 是拿來接KittyBee, KittyBee UART的default值是38400, 如果這裡更改了, 那KittyBee的baudrate也要修改, 建議都維持38400
+{{{
+#include <NewSoftSerial.h>
+NewSoftSerial mySerial(2, 3);//2 as RX,3 as TX
+#include <math.h>
+
+void setup()
+{
+Serial.begin(38400); 
+  mySerial.begin(38400);
+}
+}}}
+在 *temp_sensing_NSS* 裏面, 我們用[KnowingTempWithArduinoAndNTC]裏說的方法用10K NTC 量測出現有的溫度, T10_C 則把浮點的小數(溫度), 乘以10 再取整數, 方便我們以2 bytes來傳輸
+{{{
+ T10_C =  int(Thermister(analogRead(0))*10.)  ;
 }}}
