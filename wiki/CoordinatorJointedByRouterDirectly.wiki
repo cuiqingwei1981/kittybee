@@ -1,0 +1,13 @@
+#This section shows how to arrange ZigBee network where the coordinator is jointed by router directory
+
+= Introduction =
+
+(under construction below)
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
