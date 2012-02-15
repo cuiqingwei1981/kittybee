@@ -4,7 +4,9 @@
 
 *KittyBee* 可以直接放上Arduino的基本format, 目前有 high power(18dbm)跟low power(4dbm)兩種硬體版本, 每一種硬體都可以選擇 Coordinator/Router/End device 的 [CatcanCMDfirmware], 所以有6種firmware,都可以在downloads 下載.
 
-Down load不一樣的firmware需要 TI 的 CC debugger(硬體) 跟 TI 的 smart flash programmer(Free download 軟體)
+Download不一樣的firmware需要 
+*TI 的 CC debugger(硬體)
+*TI 的 smart flash programmer(Free download 軟體)
 
 
 = Details =
