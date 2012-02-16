@@ -1,5 +1,7 @@
-#summary How to arrange ZigBee network where the coordinator is jointed by routers in series connection.
+#summary How to arrange an series-connected ZigBee network
+
 = Introduction =
+This section shows the steps that ZigBee Network is set-up so that the coordinator is jointed by routers in series connection.
 
 (under construction)
 
