@@ -1,8 +1,7 @@
-#summary One-sentence summary of this page.
-This section shows how to arrange ZigBee network where the coordinator is jointed by routers in series connection.
+#summary This section shows how to arrange ZigBee network where the coordinator is jointed by routers in *series connection*.
 = Introduction =
 
-Add your content here.
+(under construction)
 
 
 = Details =
