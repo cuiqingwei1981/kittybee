@@ -8,6 +8,12 @@ This section shows the steps that ZigBee Network is set-up so that the coordinat
 
 = Details =
 
+Step1. coordinator單獨給電，若coordinator已經連過網路，請reset它。
+Step2. 
+
+|A|A|
+|A|A|
+
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
