@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-How to arrange an series-connected ZigBee network
+#summary How to arrange an parallel-connected ZigBee network
 
 = Introduction =
 This section shows the steps that ZigBee Network is set-up so that the coordinator is jointed by routers in parallel connection.
