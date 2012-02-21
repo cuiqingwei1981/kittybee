@@ -1,14 +1,16 @@
 #summary One-sentence summary of this page.
-This section shows how to arrange ZigBee network where the coordinator is jointed by routers in *parallel* connection.
+How to arrange an series-connected ZigBee network
 
 = Introduction =
-
-Add your content here.
+This section shows the steps that ZigBee Network is set-up so that the coordinator is jointed by routers in parallel connection.
 
 
 = Details =
+請按照以下步驟操作：
+ # coordinator單獨給電，若coordinator已經連過網路，請reset它。
+ # 將router給電，若router之前曾經連過ZigBee網路，請reset它。
+ # 確定router連上coordinator之後斷電。
+ # 如果還要再接一個router，重複步驟2~3；若已接完，則可透過SA與BroudCast來驗證整個網路是否正常。
+註：coordinator要持續給電。
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+coordinator底下一層最多可接上20個router，這些router的SA會紀錄在coordinator的flash記憶體。當要連上Zigbee網路的router超過20個，coordinator會依照flash記憶體中的SA去詢問router的連線狀況，若確定router未連上ZigBee網路則會把 *未連上的router* 踢掉、給新連上的router一個新的SA並且將新的連線記錄在flash記憶體中。
