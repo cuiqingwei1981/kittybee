@@ -7,9 +7,9 @@ This section shows the steps that ZigBee Network is set-up so that the coordinat
 
 
 = Details =
-
-Step1. coordinator單獨給電，若coordinator已經連過網路，請reset它。
-Step2. 
+請按照以下步驟操作：
+ # coordinator單獨給電，若coordinator已經連過網路，請reset它。
+ # router-1 power on 
 
 
 Add your content here.  Format your content with:
