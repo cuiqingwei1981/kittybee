@@ -13,3 +13,7 @@ This section shows the steps that ZigBee Network is set-up so that the coordinat
 註：coordinator要持續給電。
 
 coordinator底下一層最多可接上20個router，這些router的SA會紀錄在coordinator的flash記憶體。當要連上Zigbee網路的router超過20個，coordinator會依照flash記憶體中的SA去詢問router的連線狀況，若確定router未連上ZigBee網路則會把 *未連上的router* 踢掉、給新連上的router一個新的SA並且將新的連線記錄在flash記憶體中。
+
+另外，用上述步驟操作時，會發現接到15個router之後，某些SA會自行消失。
+這是因為parent在child超過16個時，會開始poll childs,
+大約一分鐘問一個，如果child沒回應會自動把child踢走。
