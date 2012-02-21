@@ -1,0 +1,9 @@
+#summary command used in ZigBee network for all device types.
+
+= Introduction =
+
+Broadcast the payload onto ZigBee network
+
+
+= Details =
+(under construction)
