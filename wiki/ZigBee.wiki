@@ -2,9 +2,9 @@
 #labels Featured
 
 = Introduction =
-following IEEE 802.15.4, ZigBee alliance defined the spec of ZigBee.
+Following IEEE 802.15.4, ZigBee alliance defined the spec of ZigBee.
 
-Most ZigBee device can work in several compliance with ZigBee spec.
+Most ZigBee devices can work in several compliance with ZigBee spec.
 
 
 = Details =
