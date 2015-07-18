@@ -1,0 +1,64 @@
+# Introduction #
+
+
+在Arduino上有相當多的溫度量測方法, 可以選擇使用digital 的temperature sensor(例如DS1621), 也可使用analog 的temperature sensor(例如LM35), 這些sensor使用相當方便, 但是在取得上比較困難價格也較高.
+
+相對的熱敏電阻幾乎在每個電子材料行都買的到, 而且價格低廉, 可以量測的溫度範圍很廣
+
+![http://www.joyin.com.tw/lan_chtr/cms_images/Products/EE15937-0.jpg](http://www.joyin.com.tw/lan_chtr/cms_images/Products/EE15937-0.jpg)
+
+
+基本上這是一種隨著溫度上升, 電阻值會改變的電阻
+想更深入了解負溫度係數熱敏電阻請參照 [英文wiki Thermistor](http://en.wikipedia.org/wiki/Thermistor)
+
+
+
+# Details #
+
+我們接下來會使用10K 的NTC配合Arduino來做溫度的量測, 您可以在arduino.cc裏找到相當多的溫度量測範例跟方法, 我個人覺得 Milan Malesevic and Zoran Stupic 在Arduino Play Ground裏寫的[Thermistor2](http://arduino.cc/playground/ComponentLib/Thermistor2)相當好用, 我把其中一個我覺得最簡單的版本示範如下
+
+**硬體接線**
+
+請準備10K NTC 以及10K 的電阻, 在Arduino上依下圖把線接起來, 在這個範例裏Analog In 我們會用A0
+
+![https://lh6.googleusercontent.com/-qWsaLTDEfsU/TwVl9myWySI/AAAAAAAAA0c/N0IeNuvEZ3A/w500-h203-k/NTC_connection.jpg](https://lh6.googleusercontent.com/-qWsaLTDEfsU/TwVl9myWySI/AAAAAAAAA0c/N0IeNuvEZ3A/w500-h203-k/NTC_connection.jpg)
+
+**Arduino code:**
+
+
+```
+============================================================
+#include <math.h>
+
+double Thermister(int RawADC) {
+ double Temp;
+ Temp = log(((10240000/RawADC) - 10000));
+ Temp = 1 / (0.001129148 + (0.000234125 + (0.0000000876741 * Temp * Temp ))* Temp );
+ Temp = Temp - 273.15;            // Convert Kelvin to Celcius
+ Temp = (Temp * 9.0)/ 5.0 + 32.0; // Convert Celcius to Fahrenheit
+ return Temp;
+}
+
+void setup() {
+ Serial.begin(115200);
+}
+
+void loop() {
+ Serial.println(int(Thermister(analogRead(0))));  // display Fahrenheit
+ delay(100);
+}
+
+============================================================
+```
+
+原作者這個範例顯示的是華氏, 把 Thermister()這個function 裏的倒數第二行拿掉, 就會是攝氏的溫度了, 像這樣...
+```
+double Thermister(int RawADC) {
+ double Temp;
+ Temp = log(((10240000/RawADC) - 10000));
+ Temp = 1 / (0.001129148 + (0.000234125 + (0.0000000876741 * Temp * Temp ))* Temp );
+ Temp = Temp - 273.15;            // Convert Kelvin to Celcius
+ //Temp = (Temp * 9.0)/ 5.0 + 32.0; // Convert Celcius to Fahrenheit
+ return Temp;
+}
+```

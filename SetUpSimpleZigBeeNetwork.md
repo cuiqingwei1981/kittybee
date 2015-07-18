@@ -1,0 +1,117 @@
+# Introduction #
+
+這裡我們要以一組3個devices( Coordinator/Router/End device)為範例, 示範及使用一些Command 來確認ZigBee 網路是否已經建立
+
+**我們會用到:**
+
+  1. KittyBee Coordinator
+  1. KittyBee Router(or End device)
+  1. KittyBee End device
+  1. USB to UART converter:
+例如 FTDI basic 或是其他USB轉UART的轉版. 這類的轉版一般有3.3V或5V,都可以用,因為KittyBee上有3.3V轉5V的功能. 或著是用Duemilanove拿掉Mega168/328也可以使用
+
+操作時建議參照[CatcanCMDfirmware](CatcanCMDfirmware.md)
+
+
+# Details #
+
+**硬體接線**
+
+接線的基本是讓ZigBee的TX接到USB-UART轉板的RX, ZigBee的RX接到USB-UART轉板的TX, Ground一定要接, 另外也可以使用轉板來對KittyBee供電
+
+下圖中左側是一個信號準為3.3V的 FTDI USB-UART轉板,我們把Ground接起來,轉板上面有5V的輸出,接到power selector的input pins(從側面看, 下方靠版子的兩pins), 轉板RX接到ZigBee 3.3V TX,轉板TX接到ZigBee 3.3V RX.
+黑色的是Ground, 紅色的是5V, 綠色是FTDI-RX到ZigBee 3.3V TX,藍色是FTDI-TX到ZigBee 3.3V RX
+
+![https://lh5.googleusercontent.com/-V3s5km7gkmU/TwZsdeZCPPI/AAAAAAAAA1w/_xVWX-_Hm9Q/w500-h205-k/2012-01-06%2B11.27.00.jpg](https://lh5.googleusercontent.com/-V3s5km7gkmU/TwZsdeZCPPI/AAAAAAAAA1w/_xVWX-_Hm9Q/w500-h205-k/2012-01-06%2B11.27.00.jpg)
+
+下圖則是利用拿掉ATMEGA168/328的Duemilanove來做接線, 須注意的是:Duemilanove上的FTDI是5V的設定, 並且Duemilanove上的TX是指原本arduino的TX, 也就是版子上FTDI的RX, 一樣的原理運用在Duemilanove上的RX
+
+![https://lh6.googleusercontent.com/-NDN8ibpsa8Q/TwZsdTc7OQI/AAAAAAAAA14/l9wjBdEGVgs/w500-h208-k/2012-01-06%2B11.26.43.jpg](https://lh6.googleusercontent.com/-NDN8ibpsa8Q/TwZsdTc7OQI/AAAAAAAAA14/l9wjBdEGVgs/w500-h208-k/2012-01-06%2B11.26.43.jpg)
+
+綠色是Duemilanove上的TX到ZigBee TX 5V,藍色是Duemilanove上的RX到ZigBee RX 5V
+
+![https://lh4.googleusercontent.com/--WLwPJ0dYRw/TwZ1H-O2k3I/AAAAAAAAA2g/HIIBGD7CCTU/w602-h124-k/uart.jpg](https://lh4.googleusercontent.com/--WLwPJ0dYRw/TwZ1H-O2k3I/AAAAAAAAA2g/HIIBGD7CCTU/w602-h124-k/uart.jpg)
+
+當USB-UART的轉板接上PC時, 您應該可以在硬體管理員裏看到一個USB SerialPort的device.
+插上幾個USB-UART的轉板就應該會出現幾個USB SerialPort, 但是每個COM Number不會一樣, 請記下每個device的 COM Number
+
+https://lh5.googleusercontent.com/-VcXEiUotKpE/TwZ-Rnj0LgI/AAAAAAAAA3A/bBle-C4u9NQ/w281-h287-k/USBinControlPanel.JPG
+
+**軟體:PC上的terminal以及CMD範例**
+
+KittyBee是透過UART來接收Command跟data.Default的設定是38400, 8N1, no flow control, 這些都可以由使用者透過命令去更改
+> [Catcan ZigBee API](http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q=)裏描述了所有的command也在第一頁描述了command的結構.
+
+所有的command都是以\*FE**開頭, 接著2個bytes的command Nr, 之後根據該command的內容, 有時會帶有資料, 這時會接著會有一個byte說明\*後面資料\*的長度(以byte為單位), 再接\*資料**, 最後一byte是\*FCS**(Frame check sequence), 這是把FE之後的所有byte依序做\*XOR\*所得到的檢查碼.**
+
+請把Coordinator將上USB-UART轉接板, 我們來實際操作...
+
+在PC上, 我們需要一個Terminal, 可惜的是windows裏已經不再附有終端機了, 網路上有許多選擇, 以下的範例會使用[DockLight](http://www.docklight.de/), 非常好用, 有Free 的evaluation 版本可供下載
+
+裝好DockLight後, 也可以在download 區找到[ZigBee CMD catcan.ptp](http://code.google.com/p/kittybee/downloads/detail?name=ZigBee%20CMD_Catcan.ptp&can=2&q=), 這裏面已經鍵入好了幾個常用的command.
+
+### 第一步 ###
+請先接好一片\*KittyBee Coornidtor**的硬體,打開Terminal之後的第一件事就是確定COM PORT跟 Baud rate等設定是否正確, default是38400, 8N1, no flow control**
+
+https://lh3.googleusercontent.com/-jcZmlijJrNY/Twa-X_pqZ8I/AAAAAAAAA40/lTnaG6O4fkY/w186-h197-k/terminal%2Bset%2Bup.JPG
+
+接下來我們要對KittyBee下Ping Node的 command: **FE 00 01**
+
+https://lh3.googleusercontent.com/-GlQOAhQJ-gc/Twa-XzDxG7I/AAAAAAAAA30/NZsNCzzZpSk/w1638-h131-k/Ping%2Bnode.JPG
+
+**藍色** 是我們下出去的Command:其中FE 是 header,  00 01是要device 回資料回來, 下一個00 是指後面沒有資料, 最後一個01則是從FE之後的00一路做XOR下來的FCS
+
+**紅色** 是KittyBee回回來的, FE依然是header, 10 01代表後面是針對 00 01的回覆,
+0F 代表後面有15個byte的資料, 參照  [Catcan ZigBee API](http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q=)我們知道:
+
+**B8 97 0D 01 00 4B 12 00** 是這個device的 8 bytes IEEE address.
+
+**FF FF** 則是 2 bytes 的 PAN ID(**Default 值是 FF FF**).
+
+**02 00 00 00** 是表示目前是在第 25 Channel.(有表可查)
+
+**00** 這個00是說這個device 是 Coordinator(Router=01, End device=02)
+
+**66** 則是FCS
+
+**到這裏, 我們可以確定這個coordinator有正確的啟動**
+
+再來我們要來看看它下面是不是有Child,這是可以用 **FE 00 13** 的command(Get Child)
+
+https://lh5.googleusercontent.com/-ClGI9aFzSj4/Twa-YKl6NSI/AAAAAAAAA4Q/-cPouBIX94Y/w963-h131-k/GetChildNone.JPG
+
+FE 10 13代表device針對FE 00 13的回覆,
+
+**01** 代表後面的data只有一個byte
+
+**00** 代摽這一byte是 0, 也就是說沒有child
+
+**02** 則是FCS
+
+### 第二步 ###
+保留原來的Coordinator,再照之前的接法把\*Kitty Bee Router(或是 End device)**接上USB-UART
+一樣先以\*FE 00 01** 的指令來看這個device有沒有正確的回應IEEE address以及其他資訊
+
+這時再回到之前的Coordinator, 我們再下一次 Get Child的command **FE 00 13**
+
+這時\*FE 10 13**後面已經不是\*01** 了,
+
+**03** 代表後面有3個bytes
+
+**01** 代表Child的個數, 一個
+
+**A0 11** 則是這個device的\*Short Address**(SA)**
+
+**B0** FCS
+
+https://lh3.googleusercontent.com/-H2PSDT-ODV4/Twa-YXrT4BI/AAAAAAAAA34/rnt81HPK1WQ/w830-h191-k/GetChildOne.JPG
+
+
+
+如果再把另外一顆Router(或device)連上USB-UART, 照之前的程序用 FF 00 01確認有正確起來, 回到Coordinator, 再下一次 **FF 00 13**,這時應該會有第二行回覆:
+你可以看到, 這時資料長度是 **05** , 連接的Child數已經是\*02**了, Short Address各是之前的\*A0 11**, 跟新增加的\*08 7B
+
+**這時這個網路已經連線了, 這時網路裏的device都會把parent跟Child記住, 就算斷電再回覆, 也會連回來**
+
+**Note
+  1. 在這個範例裏, 兩個device都是直接連到Coordinator, Router/End device連接的順序是以**RSSI

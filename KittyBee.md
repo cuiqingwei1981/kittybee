@@ -1,0 +1,55 @@
+# Introduction #
+
+**KittyBee** 可以直接放上Arduino的基本format, 目前有 high power(18dbm)跟low power(4dbm)兩種硬體版本, 每一種硬體都可以選擇 Coordinator/Router/End device 的 [CatcanCMDfirmware](CatcanCMDfirmware.md), 所以有6種firmware,都可以在downloads 下載.
+
+Download不一樣的firmware需要
+  * TI 的 CC debugger(硬體)
+  * TI 的 smart flash programmer(Free download 軟體)
+
+
+# Details #
+
+## 硬體說明 ##
+
+![https://lh5.googleusercontent.com/--Cz9nkSLpPY/TwVEy4gw3BI/AAAAAAAAAz4/BfLbiKHSICE/s800/2011-12-16%2B09.57.48.jpg](https://lh5.googleusercontent.com/--Cz9nkSLpPY/TwVEy4gw3BI/AAAAAAAAAz4/BfLbiKHSICE/s800/2011-12-16%2B09.57.48.jpg)
+
+**ZigBee 模組:**
+
+右邊的那一大塊, 有分high power跟Low power兩種, low power 有內建 chip antenna, 不需外接天線, Low power須透過上面的U.FL connector來外接天線
+
+**Power source selector:**
+
+![https://lh5.googleusercontent.com/-jl5wfWuGObw/TwUvH4MHsvI/AAAAAAAAA0U/5U00uzAIffc/w456-h168-k/2012-01-05%2B12.32.54.jpg](https://lh5.googleusercontent.com/-jl5wfWuGObw/TwUvH4MHsvI/AAAAAAAAA0U/5U00uzAIffc/w456-h168-k/2012-01-05%2B12.32.54.jpg)
+
+KittyBee上會電源轉成3.3V給Zigbee module用, 將jumper調在右邊, 會使用Arduino上的5V pin當做power source, 調在左邊是使用Arduino上的Vin當做source.
+當KittyBee上的3.3V有輸出時, 紅色的\*3.3V LED**會亮起**
+
+**ZigBee 3.3V TX/RX :**
+
+這是ZigBee上面的UART, 為3.3V
+
+**UART Connector :**
+
+**KittyBee** 有內建準位轉換, 讓3.3V的TX/RX轉成5V,以便跟Arduino溝通. 因為 Arduino 168/328的版本都只有一組UART, 通常拿來給Arduino IDE使用, 所以 KittyBee 的規劃是使用 Arduino裏的 [NewSoftSerial library](http://arduiniana.org/libraries/newsoftserial/) 來做為Arduino跟ZigBee溝通的介面.在[NewSoftSerial library](http://arduiniana.org/libraries/newsoftserial/) 裏default是使用Digital 2跟3做為TX/RX, 所以只需用jumper依照下圖把TX/RX對接, 就可以使用 NewSoftSerial來跟ZigBee溝通
+
+當然您也可以使用Arduino的UART(Digital 0跟 1)來跟ZigBee溝通, 只要把ZigBee 5V TX接到Arduino的 RX, ZigBee 5V RX 接到Arduino 的TX 即可
+
+![https://lh5.googleusercontent.com/-0ZJq-W916P0/TwUvGmYntMI/AAAAAAAAA0Y/QDPgwWIdsJY/w911-h308-k/2012-01-05%2B12.33.11.jpg](https://lh5.googleusercontent.com/-0ZJq-W916P0/TwUvGmYntMI/AAAAAAAAA0Y/QDPgwWIdsJY/w911-h308-k/2012-01-05%2B12.33.11.jpg)
+
+**Link LED:**
+
+Link LED在不同device上會有不一樣的行為;
+
+**Coordinator:**
+會恆亮, 因為Coordinator是ZigBee網路的中心
+
+**Router:**
+從來沒有連結過的Router不會亮, 有跟Parent連結過的Router會恆亮
+
+
+**End device:**
+沒有連線時,不會亮, 有連線時才會亮
+
+**CC Debugger Port:**
+
+TI debugger 標準的10pin connector, 可以連接 CC debugger 來為版子上的ZigBee(TI CC2530 based) 做firmware的upgrade.

@@ -1,0 +1,72 @@
+# Introduction #
+主要功能包含了以下幾項:
+
+## Default的ZigBee網路功能 ##
+## 查詢或設定結點目前的狀況 ##
+## 設定default以外的資料傳輸 ##
+
+
+
+# Details #
+## _catcan CMD firmware的種類_ ##
+
+由於ZigBee系統裏,節點的型式(type)無法在燒錄firmware後改變,所以 Coordinator/Router/End device 都有各自的hex file.
+
+並且high/lower power的模組的power table設定也不同, 所以也各自有適用的版本, 所以Catcan CMD firmware總共有6個版本(**最新的版本可以在download page找到**):
+
+**Coordinator High power/Low power**
+
+**Router High power/Low power**
+
+**End High power/Low power**
+
+## _網路慨述_ ##
+
+在ZigBee 網路裏會有三種devices:
+
+**coordinator**
+每個ZigBee網路中, 都會有一個,而且是唯一的.Coordinator 在網路形成時會負責組織網路, 分配Short Address.
+
+**Router** 顧名思義, 就有routing 資料功能, 同時也可以做End Device的事, 例如周邊溫度的量測...etc.
+
+**End Device** 本身做為資料傳輸的末端節點, 不具備任何routing的功能
+
+![http://rtcmagazine.com/archive_images/rtc0604tc_fs5.gif](http://rtcmagazine.com/archive_images/rtc0604tc_fs5.gif)
+
+ZigBee Pro 的stack理規範了每個device 可以做的事情, 但是沒有規定要怎麼做, 例如網路的加入及組織.原意是要留給使用用者來規劃自己適合的網路, 但是要具有規劃ZigBee網路的能力, 要花上很多的時間來研讀相關規範, 有相當的難度.
+
+**KittyBee內建的 catcan CMD firmware, 已經規畫了相當程度的網路功能, 可以讓使用者很快的上手. 但是需注意的是, 如果要更改device type, 那一定要重新用TI 的flash programmer來燒錄,這部分會有另外的章節說明. 也就是說雖然可以另外用TI的燒錄器自己燒軟體但是一般User最好一開始先選好要的firmware(Coordinator/Router/End Device)**
+
+### Catcan CMD firmware的基本行為 ###
+有兩大內容:
+
+**網路的形成**
+
+ZigBee deice 要可以互連, 最基本的有兩種東西要相同: **Channel** 跟 **PAN ID**. Catcan CMD firmware的default 設定是: **Channel=25, PAN ID=FF FF**.
+Coordinator 會接受有相同 channel跟PAN ID的router(或end device)所提出的加入請求.
+
+Router跟End device會在第一次啟動時尋找相同channel/PAN ID的 Coordinator 或 Router 來加入. 同一空間中若是有多個可能, 那 Router或 End device 會根據\*RSSI**(Radio Signal Strength Indicator)來選擇.**
+
+一般我們稱上一層的為\*Parent(父母)**, parent下的是\*Child(子女)**
+
+在link成功時, parent 會給下面一層的Child 不同的 **Short Address(SA)**, 每個device的SA都是唯一的, 在ZigBee 的 network 裏,大多數的溝通都是透過SA完成的...
+
+Router/End deivce在跟parent link 過後,會把parent的 SA 記在自己的flash 裏, 之後如果斷電再啟動, 會優先去找之前的parent,回復原來的連結
+Parent也會記下連過的child,但限20個
+
+Parent跟child的從屬關係可以就由 **Reset Network** 的command來取消. 例如從一個已經運作中的網路取出一個End device,然後要在另一個環境中加入另一個網路, 這時就要對這個device 透過UART下 reset Network的command, 這時reset過的device就會重新尋找相同channel PAN ID的parent去連結
+
+**資料的傳輸**
+
+Catcan CMD firmware是為簡單的資料收集以及控制而設計, 在不做任何特殊設定下, 系統有兩個預設的data flow:
+
+**Coordinator的廣播功能:**
+
+Coordinator 會把RX收到的資料, 直接broadcast給網路中的所有devices. 收到的device會把資料由自己的TX傳出來. 但資料長度限定在80個bytes 以內, 超過80bytes, 建議拆成兩組發送
+**Router跟End device的回傳功能:**
+
+Router跟End device則是會把RX收到的資料, 傳回Coordinator, Coordinator會把收到的資料從自己的TX傳出來, 單筆資料長度最大為255 bytes. 須注意的是Router/End device收到什麼, Coordinator就傳出什麼,不會特別帶出這些資料是從哪個device傳出的. 如果需要知道資料的來源, 最好把來源的訊息放在資料裏,實做可以參考溫度收集的範例.
+
+
+
+> 其他的細節都可以在download page 裏的[CatcanZigBeeAPI](http://code.google.com/p/kittybee/downloads/detail?name=Catcan%20ZigBee%20API.doc&can=2&q=)裏找到
